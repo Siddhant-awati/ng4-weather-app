@@ -9,7 +9,7 @@ import { WeatherDataService } from '../weather-data.service';
 export class UserFormComponent implements OnInit {
   noOfDays:Number;
   cityName:String;
-  dataSet:Object[];
+  dataSet:Object;
   constructor(private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit {
   
   getWeatherData(): void {
     this.weatherDataService.getData(this.cityName, this.noOfDays)
-        .subscribe(dataSet => this.dataSet = dataSet);
+        .subscribe(
+          dataSet => this.dataSet = dataSet);
   }
 }
